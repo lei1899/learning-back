@@ -1,6 +1,6 @@
 export async function GET(request) {
   try {
-    return new Response("hello", {
+    return new Response("hellojjj", {
       headers: { 'Content-Type': 'text/plain' },
     });
   } catch (error) {
