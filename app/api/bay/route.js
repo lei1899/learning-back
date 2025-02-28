@@ -1,7 +1,11 @@
+import { getPosts } from '../../db/queries';
+
 export async function GET(request) {
     try {
-      return new Response("bay", {
-        headers: { 'Content-Type': 'text/plain' },
+        console.log("GET");
+      const posts = await getPosts();
+      return new Response(JSON.stringify(posts), {
+        headers: { 'Content-Type': 'application/json' },
       });
     } catch (error) {
       return new Response("Error occurred", {
