@@ -1,0 +1,9 @@
+.menuLink {
+    @apply text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-gray-300;
+}
+
+.logo {
+    @apply text-xl font-bold;
+}
+
+/* 其他样式... */ 
