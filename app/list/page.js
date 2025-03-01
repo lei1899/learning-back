@@ -60,14 +60,15 @@ export default function List() {
     }, [id]);
 
     if (!data) {
-        return <> </>;
+        return (
+            <Suspense fallback={<div>Loading search parameters...</div>}>
+                <SearchParamsComponent setId={setId} />
+            </Suspense>
+        );
     }
 
     return (
         <>
-            <Suspense fallback={<div>Loading search parameters...</div>}>
-                <SearchParamsComponent setId={setId} />
-            </Suspense>
             <Container>
                 <ListContainer>
                     {data.map((e) => _createNewsRow(e))}
