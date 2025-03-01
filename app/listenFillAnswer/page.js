@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import AudioPlayer from "../components/content/audioPlayer";
 import FillInTheBlankComponent from "../components/content/fillInTheBlankComponent";
@@ -62,9 +62,10 @@ function ListenFillAnswerPage() {
 
     return (
         <Container>
-            <TitleSection>
-                <h4>{title}</h4>
-            </TitleSection>
+            <Suspense fallback={<div>Loading...</div>}>
+                <TitleSection>
+                    <h4>{title}</h4>
+                </TitleSection>
             {imageUrl && (
                 <div>
                     <ListenImage alt="" src={`${imageUrl}`} />
@@ -112,7 +113,8 @@ function ListenFillAnswerPage() {
                         )}
                     </>
                 )}
-            </BlanksContainer>
+                </BlanksContainer>
+            </Suspense>
         </Container>
     );
 }

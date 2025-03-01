@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { RowContainer, ListContainer } from './style.js';
 import { Container } from '../style/Container.js';
@@ -27,7 +27,7 @@ export default function List() {
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
     const [data, setData] = useState(null);
-    console.log("list id", id);
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -55,9 +55,11 @@ export default function List() {
 
     return (
         <Container>
-            <ListContainer>
-                {data.map((e) => _createNewsRow(e))}
-            </ListContainer>
+            <Suspense fallback={<div>Loading...</div>}>
+                <ListContainer>
+                    {data.map((e) => _createNewsRow(e))}
+                </ListContainer>
+            </Suspense>
         </Container>
     );
 }
