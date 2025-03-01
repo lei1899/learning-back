@@ -16,6 +16,7 @@ export async function getAllItems(tableName) {
 export async function getItemsById(tableName, idName, id) {
   const client = await pool.connect();
   try {
+    console.log("sql", `SELECT * FROM ${tableName} WHERE ${idName} = ${id} `);
     const { rows } = await client.query(`SELECT * FROM ${tableName} WHERE ${idName} = ${id} `);
     return rows;
   } catch (error) {

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import styles from './module.css';
+
+import { DesktopMenuItem, DesktopNavBar, Link, DesktopMenu } from './style.js';
 
 export default function Menu() {
     const [list, setList] = useState([]);
@@ -21,14 +21,14 @@ export default function Menu() {
     }, []);
 
     return (
-        <div className={styles.desktopNavBar}>
-            <div className={styles.desktopMenu}>                    
+        <DesktopNavBar>
+            <DesktopMenu>                    
                 {list.map((item) => (
-                    <Link className={styles.desktopMenuItem} key={item.id} href={`/list?id=${item.id}`}>
+                    <DesktopMenuItem key={item.id} href={`/list?id=${item.id}`}>
                         {item.name}
-                    </Link>
+                    </DesktopMenuItem>
                 ))}
-            </div>
-        </div>
+            </DesktopMenu>
+        </DesktopNavBar>
     );
 } 

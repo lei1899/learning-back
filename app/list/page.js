@@ -1,21 +1,25 @@
 'use client';
 
-import { Container, ItemContainer, itemRow } from './module.css';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { RowContainer, ListContainer } from './style.js';
+import { Container } from '../style/Container.js';
+
+const contentDetailMap = {
+    "listenFillAnswer": "listenFillAnswer"
+}
 
 function _createNewsRow(data) {
-    console.log("data", data);
     return (
-        <div className={itemRow}
+        <RowContainer 
             key={data.id} 
-            to={`/${data.type}/${data.id}`}
+            href={`/${contentDetailMap[data.type]}?id=${data.id}`}
         >
             <div>
                 <h4>{new Date(data.createdAt).toDateString()}</h4>
                 <p>{data.title}</p>
             </div>
-        </div>
+        </RowContainer>
     );
 }
 
@@ -27,7 +31,6 @@ export default function List() {
     useEffect(() => {
         async function fetchData() {
             try {
-                console.log("fetching data");
                 const res = await fetch(`/api/list?id=${id}`, {
                     cache: 'no-store',
                     headers: {
@@ -35,7 +38,6 @@ export default function List() {
                     },
                 });
                 const data = await res.json();
-                console.log("data", data);
                 setData(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -52,10 +54,10 @@ export default function List() {
     }
 
     return (
-        <div className={Container}>
-            <div className={ItemContainer}>
+        <Container>
+            <ListContainer>
                 {data.map((e) => _createNewsRow(e))}
-            </div>
-        </div>
+            </ListContainer>
+        </Container>
     );
 }
