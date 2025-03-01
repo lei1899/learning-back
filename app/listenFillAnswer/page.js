@@ -6,7 +6,7 @@ import AudioPlayer from "../components/content/audioPlayer";
 import FillInTheBlankComponent from "../components/content/fillInTheBlankComponent";
 import ComparisonComponent, { getComparisonText, getBoldText } from "../components/content/comparisonComponent";
 import QuizComponent  from "../components/content/quizComponent";
-import { TitleSection, FlexRowCenter } from "./style";
+import { TitleSection, FlexRowCenter, BlanksContainer } from "./style";
 import { Container, FlexColumnCenter, ListenImage } from "../style/Container";
 
 function ListenFillAnswerPage() {
@@ -47,7 +47,7 @@ function ListenFillAnswerPage() {
     }
 
     const handleSubmit = () => {
-        handleSubmitAndSendEmail(null, getComparisonText({ blankString:blanks, inputValues }), 'template_listen_submit');
+        // handleSubmitAndSendEmail(null, getComparisonText({ blankString:blanks, inputValues }), 'template_listen_submit');
         setShowComparison(true);
     };
 
@@ -57,7 +57,8 @@ function ListenFillAnswerPage() {
 
     const imageUrl = data?.image_url;
     const audioUrl = data?.audio_url;
-    console.log("imageUrl", audioUrl);
+    const blanks = data?.blanks;
+    const quiz = data?.quiz;
 
     return (
         <Container>
@@ -76,6 +77,43 @@ function ListenFillAnswerPage() {
                 </FlexRowCenter>
                 <AudioPlayer src={audioUrl}></AudioPlayer>
             </FlexColumnCenter>
+            <BlanksContainer>
+                {!showComparison && !showChoices && (
+                    <FillInTheBlankComponent
+                        blankString={blanks}
+                        handleSubmit={handleSubmit}
+                        inputValues={inputValues}
+                        setInputValues={setInputValues}
+                    />
+                )}
+                {showComparison && !showChoices && (
+                    <ComparisonComponent 
+                        blankString={blanks}
+                        inputValues={inputValues}
+                        handleConfirmComparison={handleConfirmComparison}
+                    />
+                )}
+                {showChoices && (
+                    <>
+                        {quiz && !quizCompleted && (
+                            <div>
+                                {getBoldText({blankString:blanks})}
+                                <QuizComponent 
+                                    questions={quiz} 
+                                    onQuizComplete={() => setQuizCompleted(true)}
+                                />
+                            </div>
+                        )}
+                        {(!quiz || quizCompleted) && (
+                            <div>
+                                {getBoldText({blankString:blanks})}
+                                <h2>Congratulations!</h2>
+                                <p>You're done!</p>
+                            </div>
+                        )}
+                    </>
+                )}
+            </BlanksContainer>
         </Container>
     );
 }

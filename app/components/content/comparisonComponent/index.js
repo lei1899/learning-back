@@ -29,9 +29,9 @@ const renderInitText = ({ blankString }) => {
         <>
             {blankString.split(/(__.*?__)/).map((part, index) => {
                 if (part.match(/__.*?__/)) {
-                    return <AnswerHighlight>{part.replace(/__/g, '')}</AnswerHighlight>;
+                    return <AnswerHighlight key={index}>{part.replace(/__/g, '')}</AnswerHighlight>;
                 }
-                return <span key={index}>{part}</span>; 
+                return <span key={index}>{part}</span>;
             })}
         </>
     );
@@ -82,7 +82,7 @@ export const getBoldText = ({ blankString }) => {
         .replace(/<[^>]*>/g, '')
         .replace(/&#x27;/g, "'")
         .replace(/&quot;/g, '"');
-    return <p>{boldText}</p>;
+    return <p key='boldText'>{boldText}</p>;
 };
 
 export default ComparisonComponent;

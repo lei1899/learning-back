@@ -29,7 +29,7 @@ const FillInTheBlankComponent = ({ blankString, handleSubmit, inputValues, setIn
                         <BlankInput
                             key={index}
                             type="text"
-                            value={inputValues[currentIndex]}
+                            value={inputValues[currentIndex] ?? ''}
                             onChange={handleInputChange(currentIndex)}
                             size={cleanPart.length + 2}
                         />

@@ -18,6 +18,7 @@ const QuizComponent = ({questions, onQuizComplete}) => {
     };
 
     const currentQuestion = questions[currentQuestionIndex];
+
     return (
         <div>
             <QuestionProcess>Question {currentQuestionIndex + 1}/{questions.length}</QuestionProcess>
