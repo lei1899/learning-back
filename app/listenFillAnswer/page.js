@@ -108,7 +108,6 @@ function ListenFillAnswerPage() {
                             <div>
                                 {getBoldText({blankString:blanks})}
                                 <h2>Congratulations!</h2>
-                                <p>You're done!</p>
                             </div>
                         )}
                     </>
