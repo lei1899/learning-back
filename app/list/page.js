@@ -13,7 +13,7 @@ function _createNewsRow(data) {
     return (
         <RowContainer 
             key={data.id} 
-            href={`/${contentDetailMap[data.type]}?id=${data.id}`}
+            href={`/${contentDetailMap[data.type]}?id=${data.id}&title=${data.title}`}
         >
             <div>
                 <h4>{new Date(data.createdAt).toDateString()}</h4>

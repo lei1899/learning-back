@@ -4,7 +4,7 @@ export const TitleSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
   @media screen and (max-width: 769px) {
     margin-bottom: 0;
   }

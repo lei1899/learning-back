@@ -12,6 +12,7 @@ import { Container, FlexColumnCenter, ListenImage } from "../style/Container";
 function ListenFillAnswerPage() {
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
+    const title = searchParams.get('title');
     const [data, setData] = useState(null);
     const [showComparison, setShowComparison] = useState(false);
     const [showChoices, setShowChoices] = useState(false); 
@@ -61,7 +62,7 @@ function ListenFillAnswerPage() {
     return (
         <Container>
             <TitleSection>
-                <h4>{data.title}</h4>
+                <h4>{title}</h4>
             </TitleSection>
             {imageUrl && (
                 <div>
