@@ -11,8 +11,8 @@ const contentDetailMap = {
 
 function _createNewsRow(data) {
     return (
-        <RowContainer 
-            key={data.id} 
+        <RowContainer
+            key={data.id}
             href={`/${contentDetailMap[data.type]}?id=${data.id}&title=${data.title}`}
         >
             <div>
@@ -23,9 +23,19 @@ function _createNewsRow(data) {
     );
 }
 
-export default function List() {
+function SearchParamsComponent({ setId }) {
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
+
+    useEffect(() => {
+        setId(id);
+    }, [id, setId]);
+
+    return null;
+}
+
+export default function List() {
+    const [id, setId] = useState(null);
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -54,12 +64,15 @@ export default function List() {
     }
 
     return (
-        <Container>
-            <Suspense fallback={<div>Loading...</div>}>
+        <>
+            <Suspense fallback={<div>Loading search parameters...</div>}>
+                <SearchParamsComponent setId={setId} />
+            </Suspense>
+            <Container>
                 <ListContainer>
                     {data.map((e) => _createNewsRow(e))}
                 </ListContainer>
-            </Suspense>
-        </Container>
+            </Container>
+        </>
     );
 }
