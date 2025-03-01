@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Menu from './components/Menu';
+import Menu from './components/Menu/Menu';
 
 export default function Home() {
   return (

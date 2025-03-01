@@ -1,0 +1,96 @@
+.container {
+    padding-top: 146px;
+    position: relative;
+    background-color: #f6f6f7;
+}
+
+@media screen and (max-width: 769px) {
+    .container {
+        padding-top: 116px;
+    }
+}
+
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem 0;
+}
+
+@media screen and (max-width: 1025px) {
+    .headerRow {
+        flex-wrap: wrap;
+    }
+}
+
+.sectionTitle {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #192e44;
+}
+
+@media screen and (max-width: 769px) {
+    .sectionTitle {
+        font-size: 2.5rem;
+    }
+}
+
+.itemContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.itemRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem;
+    background-color: white;
+    margin-bottom: 1rem;
+}
+
+.itemRow:hover {
+    background-color: #82c341;
+}
+
+.itemRow div {
+    display: flex;
+    flex-direction: row;
+}
+
+.itemRow div h4 {
+    color: #646E7B;
+    font-weight: 500;
+    padding-right: 2rem;
+}
+
+.itemRow div p {
+    max-width: 800px;
+}
+
+@media screen and (max-width: 1025px) {
+    .itemRow div {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .itemRow {
+        flex-direction: column;
+        align-items: start;
+    }
+    
+    .itemRow:hover {
+        background-color: white;
+    }
+    
+    .itemRow a {
+        margin-left: 0;
+        padding: 0.5rem;
+        border: none;
+    }
+}

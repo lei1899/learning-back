@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "contentful": "^11.5.2",
     "next": "15.2.0",
     "pg": "^8.13.3",
     "react": "^19.0.0",
