@@ -45,7 +45,7 @@ export const renderBoldText = ({ blankString }) => {
         <>
             {blankString.split(/(__.*?__)/).map((part, index) => {
                 if (part.match(/__.*?__/)) {
-                    return <BoldText>{part.replace(/__/g, '')}</BoldText>;
+                    return <BoldText key={index}>{part.replace(/__/g, '')}</BoldText>;
                 }
                 return <span key={index}>{part}</span>; 
             })}
