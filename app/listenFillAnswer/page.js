@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import AudioPlayer from "../components/content/audioPlayer";
 import FillInTheBlankComponent from "../components/content/fillInTheBlankComponent";
-import ComparisonComponent, { getComparisonText, getBoldText } from "../components/content/comparisonComponent";
+import ComparisonComponent, { getBoldText } from "../components/content/comparisonComponent";
 import QuizComponent from "../components/content/quizComponent";
 import { TitleSection, FlexRowCenter, BlanksContainer } from "./style";
 import { Container, FlexColumnCenter, ListenImage } from "../style/Container";
@@ -50,12 +50,17 @@ function ListenFillAnswerPage() {
         }
 
         if (id) {
+            console.log('fetchData', id);
             fetchData();
         }
     }, [id]);
 
     if (!data) {
-        return <></>;
+        return (
+            <Suspense fallback={<div>Loading search parameters...</div>}>
+                <SearchParamsComponent setId={setId} setTitle={setTitle} />
+            </Suspense>
+        );
     }
 
     const handleSubmit = () => {
@@ -74,12 +79,10 @@ function ListenFillAnswerPage() {
 
     return (
         <>
-        <Suspense fallback={<div>Loading search parameters...</div>}>
-            <SearchParamsComponent setId={setId} setTitle={setTitle} />
-        </Suspense>
-        <Container>
-                <TitleSection>
-                    <h4>{title}</h4>
+            {data && (
+                <Container>
+                    <TitleSection>
+                        <h4>{title}</h4>
                 </TitleSection>
                 {imageUrl && (
                     <div>
@@ -125,8 +128,10 @@ function ListenFillAnswerPage() {
                             )}
                         </>
                     )}
-                </BlanksContainer>
-            </Container></>
+                    </BlanksContainer>
+                </Container>
+            )}
+        </>
     );
 }
 
