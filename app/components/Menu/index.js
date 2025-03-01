@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-import { DesktopMenuItem, DesktopNavBar, Link, DesktopMenu } from './style.js';
+import { DesktopMenuItem, DesktopNavBar, DesktopMenu } from './style.js';
 
 export default function Menu() {
     const [list, setList] = useState([]);
@@ -12,6 +12,7 @@ export default function Menu() {
             try {
                 const res = await fetch('/api/list');
                 const data = await res.json();
+                console.log('data', data);
                 setList(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -24,7 +25,7 @@ export default function Menu() {
         <DesktopNavBar>
             <DesktopMenu>                    
                 {list.map((item) => (
-                    <DesktopMenuItem key={item.id} href={`/list?id=${item.id}`}>
+                    <DesktopMenuItem key={item.id} href={`/pages/list?id=${item.id}`}>
                         {item.name}
                     </DesktopMenuItem>
                 ))}

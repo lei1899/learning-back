@@ -2,12 +2,12 @@
 
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import AudioPlayer from "../components/content/audioPlayer";
-import FillInTheBlankComponent from "../components/content/fillInTheBlankComponent";
-import ComparisonComponent, { getBoldText } from "../components/content/comparisonComponent";
-import QuizComponent from "../components/content/quizComponent";
+import AudioPlayer from "../../components/content/audioPlayer";
+import FillInTheBlankComponent from "../../components/content/fillInTheBlankComponent";
+import ComparisonComponent, { getBoldText } from "../../components/content/comparisonComponent";
+import QuizComponent from "../../components/content/quizComponent";
 import { TitleSection, FlexRowCenter, BlanksContainer } from "./style";
-import { Container, FlexColumnCenter, ListenImage } from "../style/Container";
+import { Container, FlexColumnCenter, ListenImage } from "../../style/Container";
 
 function SearchParamsComponent({ setId, setTitle }) {
     const searchParams = useSearchParams();

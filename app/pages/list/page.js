@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { RowContainer, ListContainer } from './style.js';
-import { Container } from '../style/Container.js';
+import { Container } from '../../style/Container.js';
 
 const contentDetailMap = {
     "listenFillAnswer": "listenFillAnswer"
@@ -13,7 +13,7 @@ function _createNewsRow(data) {
     return (
         <RowContainer
             key={data.id}
-            href={`/${contentDetailMap[data.type]}?id=${data.id}&title=${data.title}`}
+            href={`/pages/${contentDetailMap[data.type]}?id=${data.id}&title=${data.title}`}
         >
             <div>
                 <h4>{new Date(data.createdAt).toDateString()}</h4>
