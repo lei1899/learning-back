@@ -19,5 +19,4 @@ export const FlexColumnCenter = styled.div`
 
 export const ListenImage = styled.img`
     width: 400px;
-    height: 300px;
 `;
