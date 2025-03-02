@@ -9,7 +9,7 @@ export default function Menu() {
     const { user, logout } = useAuth();
     const router = useRouter();
     const [list, setList] = useState([]);
-    console.log("user=====", user);
+
     useEffect(() => {
         if (!user) {
             router.push('/pages/login');
