@@ -18,6 +18,9 @@ const QuizComponent = ({questions, onQuizComplete}) => {
     };
 
     const currentQuestion = questions[currentQuestionIndex];
+    if (!currentQuestion || !currentQuestion.options) {
+        return <div>No questions found</div>;
+    }
 
     return (
         <div>
