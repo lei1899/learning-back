@@ -97,18 +97,26 @@ function ListenFillAnswerPage() {
                     <AudioPlayer src={audioUrl}></AudioPlayer>
                 </FlexColumnCenter>
                 <BlanksContainer>
-                    {!showComparison && !showChoices && (
-                        <FillInTheBlankComponent
-                            blankString={blanks}
-                            handleSubmit={handleSubmit}
-                            inputValues={inputValues}
-                            setInputValues={setInputValues} />
-                    )}
-                    {showComparison && !showChoices && (
-                        <ComparisonComponent
-                            blankString={blanks}
-                            inputValues={inputValues}
-                            handleConfirmComparison={handleConfirmComparison} />
+                    {blanks ? (
+                        <>
+                            {!showComparison && !showChoices && (
+                                <FillInTheBlankComponent
+                                    blankString={blanks}
+                                    handleSubmit={handleSubmit}
+                                    inputValues={inputValues}
+                                    setInputValues={setInputValues} />
+                            )}
+                            {showComparison && !showChoices && (
+                                <ComparisonComponent
+                                    blankString={blanks}
+                                    inputValues={inputValues}
+                                    handleConfirmComparison={handleConfirmComparison} />
+                            )}
+                        </>
+                    ) : (
+                        !showChoices && (
+                            <button onClick={() => setShowChoices(true)}>Go</button>
+                        )
                     )}
                     {showChoices && (
                         <>
@@ -128,9 +136,9 @@ function ListenFillAnswerPage() {
                             )}
                         </>
                     )}
-                    </BlanksContainer>
-                </Container>
-            )}
+                </BlanksContainer>
+            </Container>
+        )}
         </>
     );
 }
