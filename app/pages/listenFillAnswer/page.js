@@ -75,6 +75,7 @@ function ListenFillAnswerPage() {
     const imageUrl = data?.image_url;
     const audioUrl = data?.audio_url;
     const blanks = data?.blanks;
+    const initialText = data?.initial_text;
     const quiz = data?.quiz;
 
     return (
@@ -122,7 +123,6 @@ function ListenFillAnswerPage() {
                         <>
                             {quiz && !quizCompleted && (
                                 <div>
-                                    {getBoldText({ blankString: blanks })}
                                     <QuizComponent
                                         questions={quiz}
                                         onQuizComplete={() => setQuizCompleted(true)} />
@@ -130,7 +130,7 @@ function ListenFillAnswerPage() {
                             )}
                             {(!quiz || quizCompleted) && (
                                 <div>
-                                    {getBoldText({ blankString: blanks })}
+                                    {initialText}
                                     <h2>Congratulations!</h2>
                                 </div>
                             )}
