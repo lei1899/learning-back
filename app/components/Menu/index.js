@@ -12,7 +12,6 @@ export default function Menu() {
             try {
                 const res = await fetch('/api/list');
                 const data = await res.json();
-                console.log('data', data);
                 setList(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
