@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Menu from './components/menu/index';
+import Menu from './components/menu/menu';
 import { AuthProvider } from './hook/useAuth';
 
 const geistSans = Geist({
